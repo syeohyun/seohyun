@@ -1,0 +1,695 @@
+@font-face {
+  font-family: "Do Hyeon";
+  src: url("../fonts/DoHyeon-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --cream: #fff6df;
+  --ink: #14210f;
+  --gold: #f0c14d;
+  --leaf: #1f7a38;
+  --deep: #07140c;
+  --wood: #6b4124;
+  --wood-dark: #3d2414;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cream);
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  background:
+    radial-gradient(900px 420px at 50% -8%, rgba(214, 236, 150, 0.38), transparent 62%),
+    radial-gradient(700px 380px at 0% 12%, rgba(18, 90, 42, 0.55), transparent 55%),
+    radial-gradient(680px 360px at 100% 8%, rgba(10, 70, 48, 0.5), transparent 50%),
+    linear-gradient(180deg, #12361d 0%, #0b2414 42%, #0c3328 72%, #0d4a4a 100%);
+}
+
+.canopy {
+  pointer-events: none;
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 180px;
+  background:
+    radial-gradient(circle at 8% 0, #1d6b32 0 70px, transparent 72px),
+    radial-gradient(circle at 22% 10px, #145528 0 90px, transparent 92px),
+    radial-gradient(circle at 40% 0, #217a38 0 80px, transparent 82px),
+    radial-gradient(circle at 58% 8px, #114a24 0 100px, transparent 102px),
+    radial-gradient(circle at 76% 0, #1b6a34 0 86px, transparent 88px),
+    radial-gradient(circle at 94% 12px, #0f4422 0 90px, transparent 92px);
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.vines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(12px 28px at 4% 30%, #2f8a3a, transparent 70%),
+    radial-gradient(10px 24px at 96% 24%, #3aa24a, transparent 70%),
+    radial-gradient(14px 30px at 2% 62%, #237a32, transparent 70%),
+    radial-gradient(11px 26px at 98% 70%, #2c8a3d, transparent 70%);
+  z-index: 0;
+}
+
+.fireflies i {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f4ef9a;
+  box-shadow: 0 0 12px #f6ef8a;
+  animation: fly 7s linear infinite;
+  z-index: 0;
+}
+.fireflies i:nth-child(1) { left: 12%; top: 30%; animation-duration: 8s; }
+.fireflies i:nth-child(2) { left: 28%; top: 62%; animation-duration: 11s; animation-delay: -2s; }
+.fireflies i:nth-child(3) { left: 70%; top: 28%; animation-duration: 9s; animation-delay: -4s; }
+.fireflies i:nth-child(4) { left: 84%; top: 58%; animation-duration: 12s; }
+.fireflies i:nth-child(5) { left: 46%; top: 18%; animation-duration: 10s; animation-delay: -3s; }
+.fireflies i:nth-child(6) { left: 60%; top: 74%; animation-duration: 13s; }
+.fireflies i:nth-child(7) { left: 18%; top: 78%; animation-duration: 9.5s; animation-delay: -1s; }
+.fireflies i:nth-child(8) { left: 90%; top: 40%; animation-duration: 8.5s; animation-delay: -5s; }
+
+@keyframes fly {
+  0%, 100% { transform: translateY(0); opacity: 0.25; }
+  50% { transform: translateY(-28px); opacity: 1; }
+}
+
+.topbar, main { position: relative; z-index: 1; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 32px 8px;
+}
+
+.logo-link {
+  display: inline-flex;
+  border-radius: 50%;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 8px 0 #0c2914, 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+.logo-link img {
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Do Hyeon", "Malgun Gothic", sans-serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #fff4cf;
+  text-shadow: 0 4px 0 #1a3d16, 0 10px 18px rgba(0, 0, 0, 0.35);
+}
+
+main {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto 48px;
+}
+
+.hero { text-align: center; }
+
+.signboard {
+  display: inline-block;
+  margin: 12px auto 0;
+  padding: 18px 42px 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 34%),
+    repeating-linear-gradient(90deg, #8d5a32 0 16px, #7b4c2a 16px 20px);
+  border: 7px solid #4a2c16;
+  border-radius: 22px;
+  box-shadow: 0 10px 0 #2a180d, 0 18px 28px rgba(0, 0, 0, 0.35);
+}
+
+.slogan-en, .slogan-ko {
+  margin: 0;
+  font-family: "Do Hyeon", "Malgun Gothic", sans-serif;
+  color: #fffaf0;
+  text-shadow: 0 3px 0 #1a3512, 3px 6px 0 rgba(0, 0, 0, 0.28);
+  line-height: 1.05;
+}
+
+.slogan-en { font-size: clamp(52px, 8vw, 84px); }
+.slogan-ko { font-size: clamp(36px, 5vw, 54px); margin-top: 4px; }
+
+.arrow {
+  display: inline-block;
+  margin: 0 0.15em;
+  color: #ffe38a;
+}
+
+body.converting .word-video,
+body.converting .word-movie {
+  animation: to-leaf 0.42s ease-in-out infinite;
+}
+
+body.converting .word-gif,
+body.converting .word-ani {
+  display: inline-block;
+  color: #fff3a8;
+  animation: nail 0.42s ease-in-out infinite;
+}
+
+body.converting .arrow { animation: arrow-hit 0.42s linear infinite; }
+
+@keyframes to-leaf {
+  0%, 100% { transform: rotate(-1deg) scale(1); }
+  50% { transform: rotate(2deg) scale(0.96); filter: hue-rotate(55deg); }
+}
+
+@keyframes nail {
+  0%, 100% { transform: scale(1) rotate(0); }
+  42% { transform: scale(1.12) rotate(-3deg); }
+  55% { transform: scale(0.9) rotate(2deg); }
+}
+
+@keyframes arrow-hit {
+  0%, 100% { transform: translateY(0); }
+  48% { transform: translateY(6px) rotate(8deg); }
+}
+
+.tarzan-anchor {
+  width: 220px;
+  margin: 8px auto 0;
+  pointer-events: none;
+}
+
+.tarzan-svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 0 rgba(0, 0, 0, 0.18)); }
+.tarzan-svg .arm,
+.tarzan-svg .plank,
+.tarzan-svg .tarzan-body { transform-box: view-box; }
+
+body:not(.file-dragging):not(.converting) .tarzan-svg {
+  animation: idle-bob 2.8s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+
+body.file-dragging .tarzan-anchor {
+  position: fixed;
+  left: var(--drag-x);
+  top: var(--drag-y);
+  margin: 0;
+  width: 180px;
+  z-index: 30;
+  transform: translate(-50%, -78%);
+}
+
+body.file-dragging .tarzan-svg {
+  animation: sway 0.34s ease-in-out infinite;
+  transform-origin: 50% 30%;
+}
+
+body.converting .arm {
+  transform-origin: 150px 150px;
+  animation: hammer 0.42s cubic-bezier(0.3, 0, 0.2, 1) infinite;
+}
+
+body.converting .plank {
+  transform-origin: 187px 176px;
+  animation: plank 0.42s ease-in-out infinite;
+}
+
+@keyframes idle-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-14deg); }
+  50% { transform: rotate(16deg) translateY(-6px); }
+}
+
+@keyframes hammer {
+  0% { transform: rotate(-8deg); }
+  36% { transform: rotate(-62deg); }
+  50% { transform: rotate(14deg); }
+  100% { transform: rotate(-8deg); }
+}
+
+@keyframes plank {
+  0%, 40% { transform: translateY(0); }
+  52%, 68% { transform: translateY(5px) rotate(1deg); }
+  100% { transform: translateY(0); }
+}
+
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(760px, 100%);
+  margin: 16px auto 0;
+}
+
+.progress-track {
+  flex: 1;
+  height: 24px;
+  background: #1a120c;
+  border: 3px solid #4a3018;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #1f7a32, #d6ef6a 80%, #fff1a8);
+  transition: width 0.15s linear;
+}
+
+.progress-label {
+  min-width: 52px;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 22px;
+  color: #fff6cf;
+}
+
+.download-btn, .pick-btn, .go-btn, .mp4-btn, .ghost-btn {
+  font-family: "Do Hyeon", "Malgun Gothic", sans-serif;
+  border: 0;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.download-btn {
+  min-width: 118px;
+  padding: 10px 16px;
+  font-size: 22px;
+  background: #5e564b;
+  color: #c8c0b4;
+  box-shadow: 0 4px 0 #3a342c;
+}
+
+.download-btn:not(:disabled) {
+  background: linear-gradient(#ffe7a0, #e3a31a);
+  color: #3a2508;
+  box-shadow: 0 4px 0 #8a5810;
+}
+
+.download-btn:not(:disabled):hover { filter: brightness(1.05); }
+.download-btn:disabled { cursor: not-allowed; }
+
+.status, .note, .estimate, .panel-lead, .drop-sub {
+  color: #e7f3cf;
+}
+
+.status { min-height: 1.4em; margin: 8px 0 0; }
+
+.dropzone {
+  margin-top: 18px;
+  padding: 28px 18px;
+  text-align: center;
+  border: 3px dashed #d7ec9a;
+  border-radius: 24px;
+  background: rgba(8, 36, 18, 0.55);
+  box-shadow: inset 0 0 0 6px rgba(47, 122, 50, 0.25);
+}
+
+.dropzone.hot {
+  background: rgba(40, 110, 40, 0.72);
+  transform: scale(1.01);
+}
+
+.drop-title {
+  margin: 0 0 6px;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 32px;
+}
+
+.pick-btn, .go-btn, .mp4-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 22px;
+  font-size: 24px;
+  color: #1a2a08;
+  background: linear-gradient(#f3e7a2, #d7a441);
+  box-shadow: 0 5px 0 #7a5416;
+}
+
+.pick-btn:hover, .go-btn:hover, .mp4-btn:hover { filter: brightness(1.05); }
+
+.edit-btn {
+  margin-top: 16px;
+  padding: 14px 32px;
+  font-size: 28px;
+}
+.go-btn:disabled, .mp4-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.pick-btn.is-off { opacity: 0.55; pointer-events: none; }
+
+.ghost-btn {
+  padding: 10px 16px;
+  font-size: 20px;
+  color: var(--cream);
+  background: transparent;
+  border: 2px solid #d7ec9a;
+}
+
+.file-offscreen,
+.visible-file {
+  display: block;
+  width: min(460px, 100%);
+  margin: 14px auto 0;
+  padding: 8px;
+  color: #1a2a08;
+  background: #fff6df;
+  border: 3px solid #c48a4a;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.visible-file::file-selector-button {
+  margin-right: 12px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  font-family: "Do Hyeon", "Malgun Gothic", sans-serif;
+  font-size: 18px;
+  color: #1a2a08;
+  background: #f0c14d;
+  cursor: pointer;
+}
+
+.panel {
+  margin-top: 18px;
+  padding: 18px 18px 20px;
+  background: rgba(10, 28, 16, 0.72);
+  border: 3px solid #2f6a34;
+  border-radius: 18px;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.18);
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #fff1c4;
+}
+
+.panel-lead { margin: 0 0 12px; line-height: 1.5; }
+
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 10px;
+}
+
+.format-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 6px 10px;
+  border-radius: 14px;
+  background: #12331c;
+  border: 2px solid #2d6a38;
+  color: #f4ffe8;
+}
+
+.format-icon .badge {
+  width: 54px;
+  height: 40px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 16px;
+  color: #10210c;
+  background:
+    linear-gradient(#1a1a1a, #1a1a1a) 6px 8px / 8px 18px no-repeat,
+    linear-gradient(#f4d35a, #e09a2b);
+  box-shadow: inset 0 0 0 2px #6d5016;
+}
+
+.format-icon small { color: #cfe8b4; font-size: 11px; }
+.format-icon.active {
+  border-color: #ffe38a;
+  box-shadow: 0 0 0 3px rgba(255, 227, 138, 0.35);
+  background: #245c30;
+}
+
+.file-banner, .warn {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(90, 28, 18, 0.82);
+  border: 3px solid #e7b089;
+}
+
+.warn h2 { color: #ffe0c2; }
+.warn-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+.info-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.info-layout[hidden] { display: none; }
+
+.info-layout:has(#settingsPanel[hidden]) {
+  grid-template-columns: 1fr;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 6px 10px;
+  margin: 0 0 12px;
+}
+
+.info-grid dt { color: #d6ec9a; }
+.info-grid dd { margin: 0; word-break: break-all; }
+
+.preview, #resultImg, .live-frame {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  background: #06110a;
+  border-radius: 12px;
+  border: 2px solid #245c30;
+}
+
+.field, .range-row label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.field input[type="range"] { flex: 1; }
+.field.check { font-size: 15px; }
+.subhead { margin-top: 22px; }
+
+.trim-track {
+  position: relative;
+  height: 36px;
+  margin-top: 8px;
+  background: #1a120c;
+  border: 3px solid #4a3018;
+  border-radius: 999px;
+  touch-action: none;
+}
+
+.trim-selected {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #1f7a32, #d6ef6a);
+  border-radius: 999px;
+}
+
+.trim-handle {
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #fff6df;
+  border-radius: 6px;
+  background: #f0c14d;
+  transform: translate(-50%, -50%);
+  cursor: ew-resize;
+  box-shadow: 0 2px 0 #6a421c;
+}
+
+.trim-times {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: #fff1b0;
+  font-size: 14px;
+}
+
+.crop-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.crop-modes button {
+  font-family: "Do Hyeon", "Malgun Gothic", sans-serif;
+  font-size: 18px;
+  color: #fff6df;
+  background: #16361e;
+  border: 2px solid #3e7a46;
+  border-radius: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.crop-modes button.active {
+  color: #1a2a08;
+  background: #f0c14d;
+  border-color: #f0c14d;
+}
+
+.crop-canvas {
+  display: block;
+  width: min(100%, 640px);
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: 10px;
+  background: #06110a;
+  border: 2px solid #d7ec9a;
+  border-radius: 12px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.crop-canvas.portrait {
+  width: min(100%, 320px);
+}
+
+.crop-canvas:active { cursor: grabbing; }
+.range-row { display: flex; gap: 16px; }
+.range-row input { width: 110px; padding: 6px 8px; border-radius: 8px; border: 0; }
+
+.estimate { font-family: "Do Hyeon", sans-serif; font-size: 22px; color: #fff1b0; }
+.note { min-height: 1.2em; }
+
+.live-frame { display: block; margin: 8px auto; max-width: 640px; background:
+  linear-gradient(#12321c, #0c2414); }
+
+.thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 2px 12px;
+}
+
+.thumbs canvas, .thumbs img {
+  height: 72px;
+  width: auto;
+  border-radius: 8px;
+  border: 2px solid #d7ec9a;
+  background: #06110a;
+  flex: 0 0 auto;
+}
+
+#resultName { font-family: "Do Hyeon", sans-serif; font-size: 24px; }
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.archive-card {
+  background: #102616;
+  border: 2px solid #2f6a34;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.archive-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  background: #06110a;
+  border-radius: 8px;
+}
+
+.archive-card h3 {
+  margin: 8px 0 4px;
+  font-size: 16px;
+  word-break: break-all;
+}
+
+.archive-card p { margin: 0 0 8px; color: #d5ecc0; font-size: 13px; }
+.card-actions { display: flex; gap: 8px; }
+.card-actions button {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 16px;
+  border: 0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.card-actions .save { background: #f0c14d; color: #2c1c08; }
+.card-actions .del { background: #8d3a2c; color: #fff6ef; }
+
+.empty-archive {
+  margin: 0;
+  padding: 18px;
+  text-align: center;
+  color: #d7ecc0;
+  border: 2px dashed #3e7a46;
+  border-radius: 12px;
+}
+
+.capture-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  opacity: 0.02;
+  pointer-events: none;
+}
+
+.launch-note {
+  margin-top: 16px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  z-index: 40;
+  max-width: min(560px, calc(100% - 24px));
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fff1c8;
+  color: #2a1a0c;
+  font-weight: 700;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 800px) {
+  .topbar { flex-direction: column; align-items: flex-start; }
+  h1 { align-self: flex-end; }
+  .info-layout, .range-row { grid-template-columns: 1fr; display: grid; }
+  .signboard { padding: 12px 16px; }
+}

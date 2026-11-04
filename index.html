@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>해양대 GIF 생성기</title>
+  <link rel="stylesheet" href="css/style.css?v=6">
+</head>
+<body>
+  <div class="canopy" aria-hidden="true"></div>
+  <div class="vines" aria-hidden="true"></div>
+  <div class="fireflies" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+
+  <header class="topbar">
+    <a class="logo-link" href="https://www.kmou.ac.kr/" target="_blank" rel="noopener noreferrer" title="한국해양대학교 홈페이지">
+      <img src="KMOU.PNG" alt="한국해양대학교">
+    </a>
+    <h1>해양대 GIF 생성기</h1>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="signboard" id="signboard">
+        <p class="slogan-en">
+          <span class="word-video">Video</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="word-gif">Gif</span>
+        </p>
+        <p class="slogan-ko">
+          <span class="word-movie">동영상</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="word-ani">애니</span>
+        </p>
+      </div>
+
+      <div class="tarzan-anchor" id="tarzan">
+        <svg class="tarzan-svg" viewBox="0 0 240 300" role="img" aria-label="프레임을 망치로 붙이는 타잔">
+          <path class="vine" d="M28 8 C70 36 18 78 46 128 C62 158 40 176 52 210" fill="none" stroke="#2f7a32" stroke-width="8" stroke-linecap="round"/>
+          <path class="vine" d="M18 70 C40 78 34 110 22 132" fill="none" stroke="#49a84a" stroke-width="4" stroke-linecap="round"/>
+          <ellipse class="leaf" cx="34" cy="54" rx="16" ry="8" fill="#3e9a40" transform="rotate(-30 34 54)"/>
+          <ellipse class="leaf" cx="58" cy="150" rx="14" ry="7" fill="#67c85a" transform="rotate(20 58 150)"/>
+          <g class="tarzan-body">
+            <path d="M86 92 C74 28 168 16 176 96 C196 48 168 24 132 20 C96 16 72 52 86 92" fill="#3a2414"/>
+            <ellipse cx="128" cy="104" rx="38" ry="36" fill="#e2b06a"/>
+            <ellipse cx="92" cy="108" rx="8" ry="11" fill="#e2b06a"/>
+            <ellipse cx="164" cy="108" rx="8" ry="11" fill="#e2b06a"/>
+            <ellipse cx="114" cy="104" rx="6" ry="7" fill="#fff8ea"/>
+            <ellipse cx="144" cy="104" rx="6" ry="7" fill="#fff8ea"/>
+            <circle cx="116" cy="106" r="2.6" fill="#1c140e"/>
+            <circle cx="146" cy="106" r="2.6" fill="#1c140e"/>
+            <path d="M116 122 Q128 132 142 122" fill="none" stroke="#6d3d22" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M104 136 Q98 196 112 214 L150 214 Q166 194 156 136 Q132 150 104 136" fill="#e2b06a"/>
+            <path d="M100 206 Q128 190 160 206 L170 246 Q128 228 92 248 Z" fill="#1d7a38"/>
+            <path d="M108 214 Q128 232 152 214" fill="none" stroke="#b6ee78" stroke-width="3" stroke-linecap="round"/>
+            <path d="M112 136 Q70 154 52 112" fill="none" stroke="#e2b06a" stroke-width="14" stroke-linecap="round"/>
+            <path d="M118 242 Q108 268 96 286" fill="none" stroke="#e2b06a" stroke-width="14" stroke-linecap="round"/>
+            <path d="M144 242 Q160 270 176 284" fill="none" stroke="#e2b06a" stroke-width="14" stroke-linecap="round"/>
+          </g>
+          <g class="arm">
+            <path d="M150 150 Q188 132 196 104" fill="none" stroke="#e2b06a" stroke-width="14" stroke-linecap="round"/>
+            <g class="hammer" transform="translate(188 78) rotate(-28)">
+              <rect x="-4" y="-6" width="8" height="46" rx="3" fill="#8d5528"/>
+              <rect x="-22" y="-16" width="44" height="16" rx="3" fill="#efe6d2" stroke="#6d6456" stroke-width="2"/>
+            </g>
+          </g>
+          <g class="plank">
+            <rect x="156" y="168" width="62" height="16" rx="3" fill="#d59a4a" stroke="#6a421c" stroke-width="2"/>
+            <path d="M166 176 H208" stroke="#f3d7a2" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="progress-row">
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">0%</span>
+        <button type="button" class="download-btn" id="downloadBtn" disabled>다운로드</button>
+      </div>
+      <p class="status" id="statusText" role="status">영상을 올리면 프레임을 잘라 GIF로 만듭니다.</p>
+    </section>
+
+    <section class="dropzone" id="dropzone">
+      <p class="drop-title">동영상 파일을 여기에 놓으세요</p>
+      <p class="drop-sub">한 번에 파일 하나만 선택할 수 있습니다.</p>
+      <label class="pick-btn" id="pickBtn" for="fileInput">동영상 파일 선택</label>
+      <input id="fileInput" class="visible-file" type="file" title="동영상 파일">
+    </section>
+
+    <p class="file-banner" id="fileBanner" hidden></p>
+
+    <section class="warn" id="warnBox" hidden>
+      <h2 id="warnTitle">이 형식은 바로 변환할 수 없습니다</h2>
+      <p id="warnText"></p>
+      <div class="warn-actions">
+        <label class="pick-btn" id="warnPickBtn" for="fileInput">변환 가능한 동영상 선택</label>
+        <button type="button" class="mp4-btn" id="transcodeBtn" hidden>지원 형식(MP4)으로 바꾸기</button>
+        <button type="button" class="ghost-btn" id="mp4DownloadBtn" hidden>바꾼 MP4 받기</button>
+      </div>
+    </section>
+
+    <section class="info-layout" id="infoLayout" hidden>
+      <article class="panel">
+        <h2>올린 파일 정보</h2>
+        <dl class="info-grid" id="infoGrid"></dl>
+        <video id="preview" class="preview" controls playsinline></video>
+        <button type="button" class="go-btn edit-btn" id="editBtn" hidden>편집하기</button>
+      </article>
+      <article class="panel" id="settingsPanel" hidden>
+        <h2>구간과 화면 편집</h2>
+        <p class="panel-lead">몇 초부터 몇 초까지 쓸지 고르고, 그 안의 원하는 부분만 잘라 GIF로 만듭니다.</p>
+        <div class="trim" id="trim">
+          <div class="trim-track" id="trimTrack">
+            <div class="trim-selected" id="trimSelected"></div>
+            <button type="button" class="trim-handle" id="trimStart" aria-label="시작 지점"></button>
+            <button type="button" class="trim-handle" id="trimEnd" aria-label="끝 지점"></button>
+          </div>
+          <div class="trim-times">
+            <span id="trimStartLabel">00:00.00</span>
+            <span id="trimLenLabel">선택 0초</span>
+            <span id="trimEndLabel">00:00.00</span>
+          </div>
+        </div>
+        <div class="range-row">
+          <label>시작(초)
+            <input id="startInput" type="number" min="0" step="0.1" value="0">
+          </label>
+          <label>끝(초)
+            <input id="endInput" type="number" min="0" step="0.1" value="0">
+          </label>
+        </div>
+        <button type="button" class="ghost-btn" id="playRangeBtn">이 구간만 미리보기</button>
+
+        <h2 class="subhead">화면 자르기</h2>
+        <div class="crop-modes" id="cropModes">
+          <button type="button" class="active" data-crop="full">전체</button>
+          <button type="button" data-crop="1:1">정사각형 1:1</button>
+          <button type="button" data-crop="9:16">릴스 9:16</button>
+          <button type="button" data-crop="16:9">가로 16:9</button>
+        </div>
+        <canvas id="cropCanvas" class="crop-canvas" width="480" height="270"></canvas>
+        <p class="note" id="cropHint">전체 화면을 사용합니다. 비율을 고르면 노란 틀을 끌어 원하는 곳만 남길 수 있습니다.</p>
+
+        <h2 class="subhead">GIF 크기와 속도</h2>
+        <label class="field">출력 너비
+          <input id="widthInput" type="range" min="160" max="960" step="2" value="480">
+          <span id="widthValue">480px</span>
+        </label>
+        <label class="field check">
+          <input id="lockRatio" type="checkbox" checked>
+          가로·세로 비율 유지
+        </label>
+        <label class="field">출력 높이
+          <input id="heightInput" type="number" min="2" max="960" step="2" value="270">
+          <span>px</span>
+        </label>
+        <label class="field">GIF 속도 (최대 30fps)
+          <input id="fpsInput" type="range" min="1" max="30" step="1" value="15">
+          <span id="fpsValue">15fps</span>
+        </label>
+        <p class="estimate" id="estimate"></p>
+        <p class="note" id="clipNote"></p>
+        <button type="button" class="go-btn" id="convertBtn">GIF로 뚝딱 만들기</button>
+        <button type="button" class="ghost-btn" id="cancelBtn" hidden>작업 취소</button>
+      </article>
+    </section>
+
+    <section class="panel" id="framePanel" hidden>
+      <h2>만들어지는 GIF 프레임</h2>
+      <canvas id="liveFrame" class="live-frame" width="480" height="270"></canvas>
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+
+    <section class="panel" id="resultPanel" hidden>
+      <h2>완성된 GIF</h2>
+      <img id="resultImg" alt="완성된 GIF 미리보기">
+      <p id="resultName"></p>
+    </section>
+
+    <section class="panel archive">
+      <h2>완성된 GIF 보관함</h2>
+      <div class="archive-grid" id="archiveGrid"></div>
+    </section>
+
+    <video id="capture" class="capture-video" muted playsinline></video>
+    <p class="launch-note" id="launchNote" hidden>이 파일을 그냥 열면 MP4·WEBM만 GIF로 만들 수 있습니다. AVI, MKV처럼 다른 형식까지 바꾸려면 <strong>start.bat</strong>으로 실행하세요.</p>
+  </main>
+
+  <div class="toast" id="toast" role="alert" hidden></div>
+  <script src="vendor/gifenc.esm.js?v=6"></script>
+  <script src="js/app.js?v=6"></script>
+</body>
+</html>
