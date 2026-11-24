@@ -1,0 +1,146 @@
+.gif-editor {
+  --editor-surface: #0c291b;
+  --editor-line: #426246;
+  --editor-muted: #d5dfc5;
+  --editor-heading: "Do Hyeon", "Malgun Gothic", sans-serif;
+  color-scheme: dark;
+}
+
+.gif-editor [hidden] { display: none !important; }
+.gif-editor .topbar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+.gif-editor .logo-link { justify-self: start; }
+.editor-brand {
+  margin: 0;
+  color: #fff4cf;
+  font: 400 clamp(24px, 5vw, 58px)/1.05 var(--editor-heading);
+  text-align: center;
+  text-shadow: 0 4px 0 #1a3d16, 0 10px 18px #0005;
+}
+.generator-link {
+  justify-self: end;
+  color: #243a24;
+  background: #f2e4ac;
+  border-radius: 9px;
+  padding: 9px 13px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.gif-editor main { padding-top: 12px; }
+.gif-editor .intro { text-align: center; margin-bottom: 36px; }
+.gif-editor .intro h1 { font-size: clamp(30px, 5.4vw, 60px); line-height: 1.05; }
+.gif-editor .intro p { margin: 8px 0 0; color: #fff2c7; font: clamp(19px, 3vw, 29px) var(--editor-heading); }
+
+.gif-editor #drop {
+  width: min(100%, 740px);
+  margin: auto;
+  text-align: center;
+  padding: 36px 20px;
+  border: 3px dashed #cfe990;
+  border-radius: 24px;
+  background: var(--editor-surface);
+}
+.gif-editor #drop.drag { background: #224b2b; border-color: var(--gold); }
+.gif-editor h2, .gif-editor h3, .gif-editor summary {
+  margin: 0 0 12px;
+  font: 400 24px/1.15 var(--editor-heading);
+}
+.gif-editor #drop h2 { margin: 14px 0 5px; font-size: 30px; }
+.gif-editor #drop p { margin: 0 0 20px; color: var(--editor-muted); }
+.upload-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 53px;
+  height: 53px;
+  border-radius: 12px;
+  color: #ffe38a;
+  background: #27492f;
+  font-size: 30px;
+}
+
+.gif-editor button {
+  cursor: pointer;
+  border: 1px solid var(--editor-line);
+  border-radius: 9px;
+  background: #183827;
+  color: var(--cream);
+  padding: 9px 13px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 650;
+}
+.gif-editor button:hover { border-color: var(--gold); }
+.gif-editor button.primary {
+  border-color: #f3d67d;
+  background: linear-gradient(#f8eba7, #e8b849);
+  box-shadow: 0 3px 0 #805b19;
+  color: var(--ink);
+  font: 400 20px/1 var(--editor-heading);
+  padding: 12px 17px;
+}
+.gif-editor button:disabled { opacity: .6; cursor: wait; }
+.gif-editor :focus-visible { outline: 3px solid #ffe38a; outline-offset: 3px; }
+.gif-editor #message { max-width: 740px; margin: 15px auto; padding: 11px 14px; border-radius: 9px; background: #23482e; }
+.gif-editor #message.error { background: #562c24; color: #ffdfcf; }
+
+.workbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+.workbar strong { overflow-wrap: anywhere; }
+.columns { display: grid; grid-template-columns: 1.45fr 1fr; gap: 16px; align-items: start; }
+.previews { display: grid; gap: 16px; min-width: 0; }
+.gif-editor details, .gif-editor .result, .toolpanel, .gif-editor dialog {
+  min-width: 0;
+  border: 1px solid var(--editor-line);
+  border-radius: 14px;
+  background: var(--editor-surface);
+  color: var(--cream);
+  padding: 18px;
+}
+.gif-editor summary { display: list-item; cursor: pointer; margin-bottom: 0; }
+.gif-editor .preview {
+  min-height: 125px;
+  display: grid;
+  place-items: center;
+  margin-top: 14px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: repeating-conic-gradient(#25382c 0 25%, #354936 0 50%) 0/22px 22px;
+}
+.gif-editor .preview img, .gif-editor .preview video { display: block; max-width: 100%; max-height: 440px; }
+.gif-editor dl { display: flex; gap: 12px 18px; flex-wrap: wrap; margin: 14px 0 0; }
+.gif-editor dt { color: var(--editor-muted); font-size: 12px; }
+.gif-editor dd { margin: 3px 0 0; font-weight: 650; }
+
+.gif-editor #tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.gif-editor #tools button { min-height: 65px; display: grid; place-content: center; gap: 4px; font-size: 12px; padding: 6px 2px; }
+.gif-editor #tools b { font-size: 20px; color: #ffe38a; }
+.gif-editor #fields { display: grid; gap: 13px; }
+.gif-editor label { display: grid; gap: 6px; font-size: 14px; font-weight: 650; }
+.gif-editor label.check { display: flex; align-items: center; gap: 8px; }
+.gif-editor input, .gif-editor select { max-width: 100%; accent-color: #efc95b; font-family: inherit; }
+.gif-editor input[type=number], .gif-editor input[type=text], .gif-editor input:not([type]), .gif-editor select {
+  width: 100%;
+  border: 1px solid var(--editor-line);
+  border-radius: 7px;
+  background: #112b1d;
+  color: var(--cream);
+  padding: 8px;
+}
+.gif-editor .actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.gif-editor dialog { width: min(420px, calc(100% - 32px)); }
+.gif-editor dialog::backdrop { background: #061b13aa; }
+.gif-editor dialog p { color: var(--editor-muted); font-size: 13px; }
+
+@media (max-width: 720px) {
+  .columns { grid-template-columns: 1fr; }
+  .gif-editor .topbar { padding-inline: 12px; gap: 8px; }
+  .gif-editor .logo-link img { width: 42px; height: 42px; }
+  .gif-editor .signboard { padding-inline: 16px; }
+  .generator-link { font-size: 12px; padding-inline: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .gif-editor .fireflies i { animation: none; } }
+
+
+.gif-editor .upload-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.gif-editor .size-change { margin: 12px 0 0; color: var(--editor-muted); font-size: 13px; }

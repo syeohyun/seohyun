@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쓰기 쉬운 GIF 편집기</title>
+<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/editor.css?v=3">
+<script defer src="vendor/gifenc.esm.js?v=6"></script>
+<script defer src="js/mp4.js"></script>
+<meta name="theme-color" content="#123620">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<script defer src="js/gif-fallback.js"></script>
+<script defer src="js/editor.js?v=4"></script>
+</head>
+<body class="gif-editor">
+<div class="canopy" aria-hidden="true"></div>
+<div class="vines" aria-hidden="true"></div>
+<div class="fireflies" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<header class="topbar">
+  <a class="logo-link" href="index.html"><img src="KMOU.PNG" alt="한국해양대학교"></a>
+  <p class="editor-brand">해양대 GIF 생성기</p>
+  <a class="generator-link" href="index.html">← GIF 생성기</a>
+</header>
+<main>
+<section class="intro"><div class="signboard"><h1>쓰기 쉬운 GIF 편집기</h1><p>GIF 파일을 간편히 편집하기</p></div></section>
+<input id="file" type="file" accept=".gif,image/gif" hidden>
+<section id="drop">
+<span class="upload-icon" aria-hidden="true">↑</span>
+<h2>GIF 한 개를 여기에 놓으세요</h2>
+<p>지원 형식 GIF</p>
+<div class="upload-actions"><button id="pick" class="primary">GIF 파일 선택</button><button id="sample">샘플 GIF로 시작</button></div>
+</section>
+<p id="message" role="status" aria-live="polite" hidden></p>
+<section id="workspace" hidden>
+<div class="workbar"><strong id="filename"></strong><button id="replace" class="quiet">다른 GIF 열기</button></div>
+<div class="columns">
+<div class="previews">
+<details id="original" open><summary>Original GIF</summary><div class="preview" id="sourcePreview"></div><dl id="sourceMeta"></dl></details>
+<section class="result" id="result" hidden><h2 id="resultTitle"></h2><div class="preview" id="resultPreview"></div><dl id="resultMeta"></dl><p id="sizeChange" class="size-change"></p><div class="actions"><button id="continueEdit" hidden>이 결과로 계속 편집</button><button class="primary" id="download">다운로드</button><button id="save">다른 이름으로 저장</button></div></section>
+</div>
+<section class="toolpanel"><h2>Editor Tools</h2><div id="tools"></div><form id="settings" hidden><h3 id="toolTitle"></h3><div id="fields"></div><div class="actions"><button id="back" type="button">Back</button><button class="primary" type="submit">Go!</button></div></form></section>
+</div>
+</section>
+</main>
+<dialog id="saveDialog"><form id="saveForm"><h2>편집 파일 저장</h2><label>파일명 <input id="saveName" required></label><p id="saveHint">저장 대화상자에서 폴더를 선택합니다.</p><div class="actions"><button type="button" id="cancelSave">취소</button><button class="primary">저장</button></div></form></dialog>
+</body>
+</html>
+
+
+
+
